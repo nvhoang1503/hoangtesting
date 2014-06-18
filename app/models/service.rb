@@ -1,4 +1,5 @@
 # require 'rubygems'
+require 'httparty'
 class Service
   # require 'httparty'
   # include HTTParty
