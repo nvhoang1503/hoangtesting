@@ -50,7 +50,10 @@ gem "validate_url"
 
 # session checking
 gem 'activerecord-session_store'
+# call api
+gem 'httparty'
 
+gem 'curb'
 
 group :development do
   gem 'pry-rails'
@@ -62,10 +65,7 @@ group :development do
   gem 'annotate', ">=2.5.0"
   gem 'heroku_san'
 
-  # call api
-  gem 'httparty'
-
-  gem 'curb'
+  
 
 end
 
