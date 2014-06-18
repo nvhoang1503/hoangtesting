@@ -79,6 +79,6 @@ HoangTesting::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { :host => 'hoangserverapi.herokuapp.com' }
-  config.domain = 'http://hoangserverapi.herokuapp.com/'
+  config.domain = 'http://hoangserverapi.herokuapp.com'
 
 end
