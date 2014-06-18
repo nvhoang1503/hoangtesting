@@ -1,5 +1,7 @@
+require 'rubygems'
+require 'httparty'
 class UserController < ApplicationController
-  require 'httparty'
+  include HTTParty
   def register
   end
 
