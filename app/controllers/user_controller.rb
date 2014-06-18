@@ -1,3 +1,4 @@
+require 'httparty'
 class UserController < ApplicationController
   def register
   end
