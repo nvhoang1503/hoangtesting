@@ -1,6 +1,6 @@
 # require 'rubygems'
 class Service
-  require 'httparty'
+  # require 'httparty'
   # include HTTParty
   def self.create_user(email,password,confirm_password,address)
     domain = Rails.application.config.domain
