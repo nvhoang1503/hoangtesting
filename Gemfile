@@ -48,6 +48,9 @@ gem "geocoder"
 #validation URL
 gem "validate_url"
 
+# session checking
+gem 'activerecord-session_store'
+
 
 group :development do
   gem 'pry-rails'
