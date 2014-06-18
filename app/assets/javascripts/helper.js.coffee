@@ -4,4 +4,4 @@ class window.Helper
 
   autoHideFlash: ->
     func =-> $('#flash-panel').fadeOut('slow')
-    window.setTimeout func, 3000
+    window.setTimeout func, 10000

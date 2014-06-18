@@ -1,7 +1,7 @@
 - if session[:auth_token] 
   %h2 Booking a taxi
   = simple_form_for(:booking, :url => booking_create_path) do |f|
-    = f.hidden_field :auth_token, :value => session[:auth_token]
+    / = f.hidden_field :auth_token, :value => session[:auth_token]
     .field_box
       = f.input :seater_number, :label => "Seater number (4 or 7)"
     .field_box

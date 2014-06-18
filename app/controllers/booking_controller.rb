@@ -1,6 +1,6 @@
 class BookingController < ApplicationController
   def create
-    auth_token        = params[:booking][:auth_token]
+    # auth_token        = params[:booking][:auth_token]
     seater_number     = params[:booking][:seater_number]
     address           = params[:booking][:address]
     domain = Rails.application.config.domain
@@ -28,6 +28,18 @@ class BookingController < ApplicationController
     else
       redirect_to root_path, notice: "System error"
     end
+  end
+
+  def yourbooking
+    domain = Rails.application.config.domain
+    response = Curl.get("#{domain}/api/v1/bookings/user_booking?auth_token=#{session[:auth_token]}")
+    data = JSON.parse(response.body)
+    if data["status"].to_i == 200
+      @bookings = data["bookings"]
+    else
+      redirect_to root_path, notice: "System error"
+    end
+    
   end
 
 end

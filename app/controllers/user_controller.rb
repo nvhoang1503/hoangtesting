@@ -45,7 +45,7 @@ class UserController < ApplicationController
       session[:address]     = data["user"]["address"]
       redirect_to root_path
     else
-      redirect_to user_session_new_path, notice: data["errors"]
+      redirect_to user_login_path, notice: data["errors"]
     end
   end
 
