@@ -1,7 +1,4 @@
-# require 'rubygems'
-# require 'httparty'
 class UserController < ApplicationController
-  # include HTTParty
   def register
   end
 
@@ -13,25 +10,6 @@ class UserController < ApplicationController
     password          = params[:user][:password]
     confirm_password  = params[:user][:confirm_password]
     address           = params[:user][:address]
-    # domain = Rails.application.config.domain
-    # response = Curl.post("#{domain}/api/v1/users/", {
-    #                                               :email => email,
-    #                                               :password => password,
-    #                                               :password_confirmation => confirm_password,
-    #                                               :address => address
-    #                                             }
-                    # )
-
-  # response = HTTParty.post("#{domain}/api/v1/users/", 
-  #   :body => { 
-  #               :email => email,
-  #               :password => password,
-  #               :password_confirmation => confirm_password,
-  #               :address => address
-  #            }.to_json,
-  #   :headers => { 'Content-Type' => 'application/json' } )
-    # data = JSON.parse(response.body)
-
     data = Service.create_user(email,password,confirm_password,address)
     if data["status"].to_i == 201
       session[:auth_token]  = data["user"]["auth_token"]
@@ -46,20 +24,6 @@ class UserController < ApplicationController
   def session_new
     email             = params[:user][:email]
     password          = params[:user][:password]
-    # domain = Rails.application.config.domain
-    # response = Curl.post("#{domain}/api/v1/users/sign_in/", {
-    #                                               :email => email,
-    #                                               :password => password
-    #                                             }
-    #                 )
-    
-    # response = HTTParty.post("#{domain}/api/v1/users/sign_in/", 
-    # :body => { 
-    #             :email => email,
-    #             :password => password
-    #          }.to_json,
-    # :headers => { 'Content-Type' => 'application/json' } )
-    # data = JSON.parse(response.body)
     data = Service.sign_in(email,password)
     if data["status"].to_i == 200
       session[:auth_token]  = data["user"]["auth_token"]

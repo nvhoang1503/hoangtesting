@@ -1,16 +1,7 @@
 class BookingController < ApplicationController
   def create
-    # auth_token        = params[:booking][:auth_token]
     seater_number     = params[:booking][:seater_number]
     address           = params[:booking][:address]
-    # domain = Rails.application.config.domain
-    # response = Curl.post("#{domain}/api/v1/bookings/", {
-    #                                               :auth_token     => session[:auth_token],
-    #                                               :seater_number  => seater_number,
-    #                                               :address        => address
-    #                                             }
-    #                 )
-    # data = JSON.parse(response.body)
     data = Service.create_booking(seater_number,address,session[:auth_token])
     if data["status"].to_i == 200
       redirect_to booking_show_path(:booking_id => data["booking"]["id"])
@@ -20,10 +11,6 @@ class BookingController < ApplicationController
   end
 
   def show
-    # id = params[:booking_id]
-    # domain = Rails.application.config.domain
-    # response = Curl.get("#{domain}/api/v1/bookings/get_booking?auth_token=#{session[:auth_token]}&booking_id=#{id}")
-    # data = JSON.parse(response.body)
     data = Service.show_booking(session[:auth_token],params[:booking_id])
     if data["status"].to_i == 200
       @booking = data["booking"]
@@ -33,9 +20,6 @@ class BookingController < ApplicationController
   end
 
   def yourbooking
-    # domain = Rails.application.config.domain
-    # response = Curl.get("#{domain}/api/v1/bookings/user_booking?auth_token=#{session[:auth_token]}")
-    # data = JSON.parse(response.body)
     data = Service.user_booking(session[:auth_token])
     if data["status"].to_i == 200
       @bookings = data["bookings"]
